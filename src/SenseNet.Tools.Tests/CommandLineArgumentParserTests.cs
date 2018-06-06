@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Reflection;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SenseNet.Tools.CommandLineArguments;
 // ReSharper disable ArgumentsStyleStringLiteral
 // ReSharper disable ArgumentsStyleLiteral
@@ -13,16 +14,16 @@ namespace SenseNet.Tools.Tests
         {
             var args = new[] { "/a", "/string:asdf", "/int:42" };
             var settings = new Args1();
-            var settingsAcc = new PrivateObject(settings);
+            //var settingsAcc = new PrivateObject(settings);
 
             ArgumentParser.Parse(args, settings);
 
             Assert.AreEqual(true, settings.A);
             Assert.AreEqual(false, settings.B);
-            Assert.AreEqual(false, (bool)settingsAcc.GetProperty("C"));
+            // Assert.AreEqual(false, (bool)settings.GetProperty("C"));
             Assert.AreEqual(null, settings.Source);
             Assert.AreEqual(null, settings.Target);
-            Assert.AreEqual("asdf", (string)settingsAcc.GetFieldOrProperty("StringParam1"));
+            // Assert.AreEqual("asdf", (string)settingsAcc.GetFieldOrProperty("StringParam1"));
             Assert.AreEqual(42, settings.IntParam1);
         }
         [TestMethod]
@@ -30,7 +31,7 @@ namespace SenseNet.Tools.Tests
         {
             var args = new[] { "--string=asdf", "-int:42" };
             var settings = new Args1();
-            var settingsAcc = new PrivateObject(settings);
+            // var settingsAcc = new PrivateObject(settings);
 
             ArgumentParser.Parse(args, settings);
 
@@ -39,7 +40,7 @@ namespace SenseNet.Tools.Tests
             Assert.AreEqual(false, settings.A);
             Assert.AreEqual(null, settings.Source);
             Assert.AreEqual(null, settings.Target);
-            Assert.AreEqual("asdf", (string)settingsAcc.GetFieldOrProperty("StringParam1"));
+            // Assert.AreEqual("asdf", (string)settingsAcc.GetFieldOrProperty("StringParam1"));
             Assert.AreEqual(42, settings.IntParam1);
         }
         [TestMethod]
@@ -47,7 +48,7 @@ namespace SenseNet.Tools.Tests
         {
             var args = new[] { "/STRING:asdf", "-INT=42" };
             var settings = new Args1();
-            var settingsAcc = new PrivateObject(settings);
+            // var settingsAcc = new PrivateObject(settings);
 
             ArgumentParser.Parse(args, settings);
 
@@ -56,7 +57,7 @@ namespace SenseNet.Tools.Tests
             Assert.AreEqual(false, settings.A);
             Assert.AreEqual(null, settings.Source);
             Assert.AreEqual(null, settings.Target);
-            Assert.AreEqual("asdf", (string)settingsAcc.GetFieldOrProperty("StringParam1"));
+            // Assert.AreEqual("asdf", (string)settingsAcc.GetFieldOrProperty("StringParam1"));
             Assert.AreEqual(42, settings.IntParam1);
         }
         [TestMethod]
@@ -64,7 +65,7 @@ namespace SenseNet.Tools.Tests
         {
             var args = new[] { "-s=asdf", "-i:42" };
             var settings = new Args1();
-            var settingsAcc = new PrivateObject(settings);
+            // var settingsAcc = new PrivateObject(settings);
 
             ArgumentParser.Parse(args, settings);
 
@@ -73,7 +74,7 @@ namespace SenseNet.Tools.Tests
             Assert.AreEqual(false, settings.A);
             Assert.AreEqual(null, settings.Source);
             Assert.AreEqual(null, settings.Target);
-            Assert.AreEqual("asdf", (string)settingsAcc.GetFieldOrProperty("StringParam1"));
+            // Assert.AreEqual("asdf", (string)settingsAcc.GetFieldOrProperty("StringParam1"));
             Assert.AreEqual(42, settings.IntParam1);
         }
         [TestMethod]
@@ -81,7 +82,7 @@ namespace SenseNet.Tools.Tests
         {
             var args = new[] { "-STRING", "asdf", "-INT", "42" };
             var settings = new Args1();
-            var settingsAcc = new PrivateObject(settings);
+            // var settingsAcc = new PrivateObject(settings);
 
             ArgumentParser.Parse(args, settings);
 
@@ -90,7 +91,7 @@ namespace SenseNet.Tools.Tests
             Assert.AreEqual(false, settings.A);
             Assert.AreEqual(null, settings.Source);
             Assert.AreEqual(null, settings.Target);
-            Assert.AreEqual("asdf", (string)settingsAcc.GetFieldOrProperty("StringParam1"));
+            // Assert.AreEqual("asdf", (string)settingsAcc.GetFieldOrProperty("StringParam1"));
             Assert.AreEqual(42, settings.IntParam1);
         }
         [TestMethod]
@@ -98,7 +99,7 @@ namespace SenseNet.Tools.Tests
         {
             var args = new[] { "/STRING", "asdf", "/INT", "42" };
             var settings = new Args1();
-            var settingsAcc = new PrivateObject(settings);
+            // var settingsAcc = new PrivateObject(settings);
 
             ArgumentParser.Parse(args, settings);
 
@@ -107,7 +108,7 @@ namespace SenseNet.Tools.Tests
             Assert.AreEqual(false, settings.A);
             Assert.AreEqual(null, settings.Source);
             Assert.AreEqual(null, settings.Target);
-            Assert.AreEqual("asdf", (string)settingsAcc.GetFieldOrProperty("StringParam1"));
+            // Assert.AreEqual("asdf", (string)settingsAcc.GetFieldOrProperty("StringParam1"));
             Assert.AreEqual(42, settings.IntParam1);
         }
         [TestMethod]
@@ -115,7 +116,7 @@ namespace SenseNet.Tools.Tests
         {
             var args = new[] { "source", "/STRING", "asdf", "target", "-i:42" };
             var settings = new Args1();
-            var settingsAcc = new PrivateObject(settings);
+            // var settingsAcc = new PrivateObject(settings);
 
             ArgumentParser.Parse(args, settings);
 
@@ -124,7 +125,7 @@ namespace SenseNet.Tools.Tests
             Assert.AreEqual(false, settings.A);
             Assert.AreEqual("source", settings.Source);
             Assert.AreEqual("target", settings.Target);
-            Assert.AreEqual("asdf", (string)settingsAcc.GetFieldOrProperty("StringParam1"));
+            // Assert.AreEqual("asdf", (string)settingsAcc.GetFieldOrProperty("StringParam1"));
             Assert.AreEqual(42, settings.IntParam1);
         }
         [TestMethod]
@@ -135,7 +136,7 @@ namespace SenseNet.Tools.Tests
 
             var args = new string[0];
             var settings = new Args1 { IntParam1 = defaultInt, Source = defaultSource };
-            var settingsAcc = new PrivateObject(settings);
+            // var settingsAcc = new PrivateObject(settings);
 
             ArgumentParser.Parse(args, settings);
 
@@ -144,7 +145,7 @@ namespace SenseNet.Tools.Tests
             Assert.AreEqual(false, settings.A);
             Assert.AreEqual(defaultSource, settings.Source);
             Assert.AreEqual(null, settings.Target);
-            Assert.AreEqual(null, (string)settingsAcc.GetFieldOrProperty("StringParam1"));
+            // Assert.AreEqual(null, (string)settingsAcc.GetFieldOrProperty("StringParam1"));
             Assert.AreEqual(defaultInt, settings.IntParam1);
         }
 
@@ -191,7 +192,7 @@ namespace SenseNet.Tools.Tests
             Assert.IsTrue(parser.IsHelp);
             var help = parser.GetHelpText();
 
-            Assert.AreEqual(Args2.ExpectedHelpText.Trim(), help.Trim());
+            Assert.AreEqual(Args2.GetExpectedHelpText().Trim(), help.Trim());
         }
 
         [TestMethod]
@@ -342,7 +343,7 @@ namespace SenseNet.Tools.Tests
             }
             catch (ParsingException e)
             {
-                Assert.AreEqual(Args2.ExpectedHelpText.Trim(), e.Result.GetHelpText().Trim());
+                Assert.AreEqual(Args2.GetExpectedHelpText().Trim(), e.Result.GetHelpText().Trim());
             }
         }
     }
@@ -384,7 +385,10 @@ namespace SenseNet.Tools.Tests
         [CommandLineArgument(name: "INT", aliases: "i", helpText: "Description INT")]
         internal int IntParam1 { get; set; }
 
-        internal const string ExpectedHelpText = @"SenseNet.Tools.Tests 2.0.1.0
+        internal static string GetExpectedHelpText()
+        {
+            var asmName = Assembly.GetExecutingAssembly().GetName();
+            return $@"{asmName.Name} {asmName.Version}
 
 Usage:
 SenseNet.Tools.Tests <source> <target> [-A:Boolean] [-B:Boolean] [-C:Boolean] [-INT:Int32] <-STRING:String> [?]
@@ -415,6 +419,7 @@ SenseNet.Tools.Tests <source> <target> [-A:Boolean] [-B:Boolean] [-C:Boolean] [-
 [?, -?, /?, -h, -H, /h /H -help --help] (optional)
     Display this text.
 ";
+        }
     }
     internal class Args3
     {
