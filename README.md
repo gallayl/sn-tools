@@ -1,5 +1,7 @@
 # sensenet ECM Tools
 
+[![Build Status](https://travis-ci.org/gallayl/sn-tools.svg?branch=master)](https://travis-ci.org/gallayl/sn-tools)
+[![codecov](https://codecov.io/gh/gallayl/sn-tools/branch/master/graph/badge.svg)](https://codecov.io/gh/gallayl/sn-tools)
 [![Join the chat at https://gitter.im/SenseNet/sn-tools](https://badges.gitter.im/SenseNet/sn-tools.svg)](https://gitter.im/SenseNet/sn-tools?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![NuGet](https://img.shields.io/nuget/v/SenseNet.Tools.svg)](https://www.nuget.org/packages/SenseNet.Tools)
 
