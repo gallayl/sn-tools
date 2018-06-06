@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sensenet.Tools\Sensenet.Tools.csproj" />
+    <ProjectReference Include="..\SenseNet.Tools\SenseNet.Tools.csproj" />
   </ItemGroup>
 
 </Project>
