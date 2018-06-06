@@ -4,7 +4,7 @@ dotnet: 2.1.300
 install:
  - dotnet restore ./src
 script:
- - dotnet test ./src/SenseNet.Tools.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutputDirectory=coverage
+ - dotnet test ./src/SenseNet.Tools.Tests /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutputDirectory=../../coverage
 after_success:
  - bash <(curl -s https://codecov.io/bash)
 notifications:
